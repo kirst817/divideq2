@@ -1,19 +1,14 @@
 var express = require('express');
 var passport = require('passport');
 var router = express.Router();
+var knex = require('../db/knex');
+
 
 var env = {
   AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
   AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
   AUTH0_CALLBACK_URL: process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
 };
-///////// IMPORT FROM OLD ///////////
-
-
-Ryan Kane [12:27 PM]
-var express = require('express');
-var router = express.Router();
-var knex = require('../db/knex');
 
 //To access images on aws s3 - require and config S3
 //set your .env file to have AWS_SECRET_KEY_ID and AWS_SECRET_ACCESS_KEY
@@ -135,9 +130,6 @@ router.get('/leaderboards', function(req, res, next){
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express', env: env });
-});
 
 router.get('/login',
   function(req, res){
