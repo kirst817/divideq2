@@ -1,18 +1,8 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 
-<button onclick="signin()"> Login</button>
-
-
-
-  <!-- script.
-    var lock = new Auth0Lock('#{env.AUTH0_CLIENT_ID}', '#{env.AUTH0_DOMAIN}');
-    function signin() {
-      lock.show({
-          callbackURL: '#{env.AUTH0_CALLBACK_URL}'
-        , responseType: 'code'
-        , authParams: {
-          scope: 'openid name email picture'
-        }
-      });
-    } -->
+{{#each images}}
+<div class="card">
+  <img src={{this.url}} />
+</div>
+{{/each}}

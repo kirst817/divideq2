@@ -49,7 +49,7 @@ var rootUrl = 'https://s3-us-west-2.amazonaws.com/divideyourself.com/images/'
    }
    console.log(data);
 
-   res.render('index', { title: 'Express', imagesArr: data });
+   res.render('index', { title: 'Express', images: data });
  }).catch(function(e) {
    console.log(e);
    res.render('index', {title: 'your database is empty'});
@@ -109,7 +109,7 @@ router.get('/:username', function(req, res, next){
 });
 
 router.get('/theboard', function(req, res, next){
- res.render('theboard')
+ res.render('theboard');
 });
 
 router.post('/theboard', function(req, res, next){
