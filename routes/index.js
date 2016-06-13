@@ -104,8 +104,24 @@ router.post('/', upload.single('form-name-and-multer-name-must-match'), function
 });
 
 
-router.get('/:username', function(req, res, next){
- res.render(':username');
+router.get('/leaderboards', function(req, res, next){
+
+var tribeName;
+
+  knex('users').where({
+    id: '1'
+  }).then(function(data){
+    knex('tribes').where({
+      id: data[0].tribeid
+    }).then(function(tribe){
+      tribeName = tribe[0].name;
+      // console.log(tribe);
+      res.render('leaderboards', {tribeName: tribeName});
+    })
+    // console.log(data);
+
+  });
+
 });
 
 router.get('/theboard', function(req, res, next){
@@ -115,16 +131,6 @@ router.get('/theboard', function(req, res, next){
 router.post('/theboard', function(req, res, next){
  res.send('post to the board!');
 });
-
-router.get('/:tribe', function(req, res, next){
- res.render(':tribe');
-});
-
-router.get('/leaderboards', function(req, res, next){
- res.render('leaderboards')
-});
-
-
 //////////IMPRT FROM OLD //////////
 
 
@@ -147,5 +153,29 @@ router.get('/account/callback',
     res.redirect(req.session.returnTo || '/user');
   });
 
+  router.get('/:username', function(req, res, next){
+
+    var tribeName;
+    var userName;
+
+    knex('users').where({
+      id: '1'
+    }).then(function(data){
+      userName = data[0].username;
+      console.log(userName);
+      knex('tribes').where({
+        id: data[0].tribeid
+      }).then(function(tribe){
+        tribeName = tribe[0].name;
+    
+
+        res.render('profile', {userName: userName, tribeName: tribeName });
+      });
+    // });
+
+  });
+  router.get('/tribes/:tribe', function(req, res, next){
+    res.render('tribes');
+  });
 
 module.exports = router;

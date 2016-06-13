@@ -1,17 +1,15 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
-  color: #00B7FF;
-}
+  color: #00B7FF; }
 
-.card{
+.card {
   width: 200px;
-  display: inline-block;
-}
+  display: inline-block; }
 
-.card img{
-  width: 100%;
-}
+.card img {
+  width: 100%; }
+
+/*# sourceMappingURL=style.css.map */
